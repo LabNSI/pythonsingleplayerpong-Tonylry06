@@ -19,7 +19,7 @@ small_font = pygame.font.SysFont('monospace', 25)
 
 def game():
     screen.fill(BLACK)
-    title = myfont.render("C'est parti !", False, GREEN)
+    title = myfont.render("C'est parti mon bonhomme !", False, GREEN)
     screen.blit(title, (WIDTH // 2 - title.get_width() // 2, HEIGHT // 2 - title.get_height() * 2))
     pygame.display.update()
     pygame.time.delay(1000)
@@ -79,7 +79,7 @@ def game():
             if y + radius >= paddle["y"] and paddle["x"] <= x <= paddle["x"] + paddle["width"]:
                 y_sens *= -1
                 score += 1
-                speed += 1  # Augmenter la vitesse à chaque rebond sur la raquette
+                speed += 0.5  # Augmenter la vitesse à chaque rebond sur la raquette
 
             if y + radius > HEIGHT:
                 end = True
@@ -88,7 +88,7 @@ def game():
             y += y_sens * speed
 
         score_font = pygame.font.SysFont('monospace', 30)
-        score_display = score_font.render("Score: " + str(score), True, WHITE)
+        score_display = score_font.render( str(score), True, WHITE)
         screen.blit(score_display, (10, 10))
 
         pygame.draw.circle(screen, WHITE, (x, y), radius)
@@ -98,7 +98,7 @@ def game():
         pygame.time.delay(10)
 
     screen.fill(BLACK)
-    end_message = myfont.render("Votre score est : " + str(score), True, WHITE)
+    end_message = myfont.render("GG, votre score est : " + str(score), True, WHITE)
     screen.blit(end_message, (WIDTH // 2 - end_message.get_width() // 2, HEIGHT // 2 - end_message.get_height() // 2))
     pygame.display.update()
 
